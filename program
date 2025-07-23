@@ -1,5 +1,64 @@
 #include<stdio.h>
 
+//求自然数e
+//自定义阶乘算法
+double Factoral(int i)
+{
+	int j;
+	int sum = 1.0;
+	for (j = 1; j <= i; j++)
+	{
+		sum = sum * j;
+	}
+	return sum;
+}
+
+int main(void)
+{
+	double e = 1.0;
+	double flag = pow(10, -6);
+	int n = 1;
+	while (1.0 / Factoral(n) > flag) {
+		e += 1.0 / Factoral(n);
+		n++;
+	}
+
+	printf("最后一项的底数是 %d\n", n-1);
+	printf("e=%lf\n", e);
+
+
+
+//水仙花数
+//1. 得到百位 十位 和个位的值分别是多少
+//2. 对应n次幂之和是否等于该数
+	int units, tens, hundreds;
+	int x = 100;
+	int sum;
+	for (x = 100; x <= 999; x++)
+	{
+		units = x % 10;
+		tens = (x/ 10) % 10;
+		hundreds = (x / 100) % 10;
+		sum = pow(units, 3) + pow(tens, 3) + pow(hundreds, 3);
+		if (x == sum)
+		{
+			printf("%d 是一个水仙花数\n", x);
+		}
+	}
+
+
+//是否可以构成三角形，并输出其面积
+	int a, b, c;
+	scanf("%d,%d,%d", &a, &b, &c);
+	if (a + b > c && a + c > b && b + c > a)
+	{
+		printf("可构成三角形\n");
+		double t = (a + b + c) / 2;
+		double s = sqrt(t * (t - a) * (t - b) * (t - c));
+		printf("组成三角形的面积是%f\n", s);
+	}
+	else
+		printf("不可构成三角形\n");
 
 
 
